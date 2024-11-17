@@ -25,7 +25,14 @@ def index():
 def register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        new_user = User(username=form.username.data, password=generate_password_hash(form.password.data))
+        existing_user=User.query.filter((User.username == form.username.data) | (User.email == form.email.data)).first()
+        if existing_user:
+            flash('Имя пользователя или email уже заняты. Пожалуйста, выбирите другое.', 'danger')
+            return redirect(url_for('register'))
+
+        new_user = User(username=form.username.data, 
+                        email = form.email.data,
+                        password=generate_password_hash(form.password.data))
         db.session.add(new_user)
         db.session.commit()
         flash('Вы успешно зарегистрировались!', 'success')

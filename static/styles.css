@@ -1,3 +1,5 @@
+
+
 .modal {
     display: none;
     position: fixed;
@@ -21,4 +23,16 @@
     float: right;
     font-size: 28px;
     font-weight: bold;
+}
+.form-container {
+    max-width: 500px; /* Максимальная ширина формы */
+    margin: 20px auto; /* Центрирование формы по горизонтали */
+    padding: 20px;
+    background-color: #f0f8ff; /* Цвет фона формы */
+    border-radius: 8px; /* Скругление углов формы */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Тень для визуального эффекта */
+}
+
+.form-group {
+    margin-bottom: 15px; /* Отступ между группами полей */
 }
